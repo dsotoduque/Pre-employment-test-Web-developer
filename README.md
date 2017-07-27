@@ -15,7 +15,7 @@
 
 ###  Grunt/Gulp
 
-5. Replace all *.js files in the project for one minified file "public/script.js". Generate this file every time any of file in "src/js/" is saved.
+5. Replace all *.js files in the project for one minified file "public/script.js". Generate this file every time any file in "src/js/" is saved.
 
 ##Note:
 Please make a fork of this repository and send the repository link with the solution.
