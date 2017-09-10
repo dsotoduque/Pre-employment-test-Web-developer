@@ -4,7 +4,7 @@ include 'models/my_patient.php';
 
 $patient_model = new my_patient();
 
-$patients = $patient_model->list_all();
+$patients = $patient_model->list_by_age_grouped();
 
 ?>
 
@@ -16,7 +16,7 @@ $patients = $patient_model->list_all();
     <title>Test for New Hires</title>
     <meta name="description" content="Test for New Hires">
     <meta name="author" content="PV">
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -25,39 +25,46 @@ $patients = $patient_model->list_all();
         <h1>Patient Listing</h1>
 
         <p>
-            <label for="patient_filter">Filter by Name</label>
-            <input type="text" name="patient_filter" />
+            <label for="inputFilter">Filter by Name</label>
+            <input id="inputFilter" type="text" name="patient_filter" />
         </p>
 
         <p>
-            <label for="patient_filter">Number of patients grouped by age</label>
+            <label for="inputFilter">Number of patients grouped by age</label>
             <ul>
                 <!-- Hint: Task 3. -->
                 <li><span>Age:  </span><span>Patients quantity: </span></li>
             </ul>
         </p>
-
-        <div class="row">
-            <div class="col-xs-4">Name</div>
-            <div class="col-xs-4">Age</div>
-            <div class="col-xs-4">Phone</div>
-        </div>
+        <table id="table">
+            <thead>
+                <th class="col-xs-4">Name</th>
+                <th id="age" class="col-xs-4">Age</th>
+                <th class="col-xs-4">Phone</th>
+            </thead>
+             
+            <tbody>
+            <?php foreach($patients as $patient): ?>
+                <tr>
+                    <td class="col-xs-4"><?php echo $patient->patient_name; ?></td>
+                    <td class="col-xs-4 ages"><?php echo $patient->patient_age; ?></td>
+                    <td class="col-xs-4"><?php echo $patient->patient_phone; ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+            
+        </table>
 
         <!-- Hint: Task 4. -->
-        <?php foreach($patients as $patient): ?>
-            <div class="row">
-                <div class="col-xs-4"><?php echo $patient->patient_name; ?></div>
-                <div class="col-xs-4"><?php echo $patient->patient_age; ?></div>
-                <div class="col-xs-4"><?php echo $patient->patient_phone; ?></div>
-            </div>
-        <?php endforeach; ?>
+       
+    
 
     </div>
 
     <!-- scripts at the bottom! -->
-    <script src="public/js/jquery-3.2.1.min.js"></script>
-    <script src="public/js/bootstrap.js"></script>
-    <script src="public/js/script.js"></script>
+    <script src="src/js/jquery-3.2.1.min.js"></script>
+    <script src="src/js/bootstrap.js"></script>
+    <script src="src/js/script.js"></script>
 
     <!--  Hint: Task 5. -->
     <!-- <script src="public/js/script.js"></script> -->

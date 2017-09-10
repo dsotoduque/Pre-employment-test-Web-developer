@@ -1,3 +1,5 @@
+CREATE DATABASE test_db;
+
 DROP TABLE IF EXISTS `patients`;
 
 CREATE TABLE `patients` (
